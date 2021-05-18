@@ -3,12 +3,14 @@ import React from "react";
 const Footer = props => {
   return (
     <div>
+      my footer
       <ul>
         {props.footerInfo.map((element, index) => (
-          <li key={index}>{element}</li>
+          <li style={{ listStyle: "none" }} key={index}>
+            {element}
+          </li>
         ))}
       </ul>
-      my footer
     </div>
   );
 };
