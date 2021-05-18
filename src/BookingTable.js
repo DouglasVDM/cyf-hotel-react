@@ -1,10 +1,11 @@
 import React from "react";
+import FakeBookings from "./data/fakeBookings.json";
 
 function BookingTable() {
   return (
     <div className="table-responsive">
       <table className="table">
-        <caption>List of users</caption>
+        <caption>List of Customers</caption>
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -17,38 +18,24 @@ function BookingTable() {
             <th scope="col">check out date</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>401</td>
-            <td>1Jan2021</td>
-            <td>7Jan2021</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>402</td>
-            <td>8Jan2021</td>
-            <td>15Jan2021</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>403</td>
-            <td>16Jan2021</td>
-            <td>23Jan2021</td>
-          </tr>
-        </tbody>
+        {FakeBookings.map(data => {
+          return (
+            <tbody key={data.id}>
+              <tr>
+                <th scope="col">{data.id}</th>
+                <th scope="col">{data.title}</th>
+                <th scope="col">{data.firstName}</th>
+                <th scope="col">{data.surname}</th>
+                <th scope="col">{data.email}</th>
+                <th scope="col">{data.roomId}</th>
+                <th scope="col">{data.checkInDate}</th>
+                <th scope="col">{data.checkOutDate}</th>
+              </tr>
+            </tbody>
+          );
+        })}
       </table>
     </div>
   );
 }
-
 export default BookingTable;
