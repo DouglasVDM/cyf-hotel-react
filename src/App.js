@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div className="App">
       <Heading />
-      <TouristInfoCards />
       <Bookings />
+      <TouristInfoCards />
       <Footer
         footerInfo={[
           "123 Fake Street, London, E1 4UD",
