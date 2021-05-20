@@ -32,7 +32,7 @@ function BookingTable() {
                 <th scope="col">{data.checkInDate}</th>
                 <th scope="col">{data.checkOutDate}</th>
                 <th scope="col">
-                  {date_difference_indays(data.checkInDate, data.checkOutDate)}
+                  {getDifferenceInDays(data.checkInDate, data.checkOutDate)}
                 </th>
               </tr>
             </tbody>
@@ -43,14 +43,20 @@ function BookingTable() {
   );
 }
 
-function date_difference_indays(date1, date2) {
-  let dt1 = new Date(date1);
-  let dt2 = new Date(date2);
-  return Math.floor(
-    (Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) -
-      Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /
-      (1000 * 60 * 60 * 24)
-  );
+function getDifferenceInDays(start, end) {
+  const date1 = new Date(start);
+  const date2 = new Date(end);
+
+  // One day in milliseconds
+  const oneDay = 1000 * 60 * 60 * 24;
+
+  // Calculating the time difference between two dates
+  const diffInTime = date2.getTime() - date1.getTime();
+
+  // Calculating the no. of days between two dates
+  const diffInDays = Math.round(diffInTime / oneDay);
+
+  return diffInDays;
 }
 
 export default BookingTable;
