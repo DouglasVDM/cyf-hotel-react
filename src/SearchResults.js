@@ -1,7 +1,7 @@
 import React from "react";
 import FakeBookings from "./data/fakeBookings.json";
 
-function SearchResults() {
+function SearchResults({ bookings }) {
   function getDifferenceInDays(start, end) {
     const date1 = new Date(start);
     const date2 = new Date(end);
@@ -35,7 +35,7 @@ function SearchResults() {
             <th scope="col">Number Of Nights</th>
           </tr>
         </thead>
-        {FakeBookings.map(data => {
+        {bookings.map(data => {
           return (
             <tbody key={data.id}>
               <tr>
