@@ -1,24 +1,25 @@
+import { localeData } from "moment";
 import React, { useState } from "react";
 
 function SearchResults({ bookings }) {
   let green = "#39D1B4";
   let white = "white";
 
-  const initialState = green;
-  const [backGColor, setBackGColor] = useState(initialState);
+  const initialState = { backgroundColor: white, selectedIndex: -1 };
+  const [{ backgroundColor, selectedIndex }, setBackGColor] = useState(
+    initialState
+  );
 
-  function handleColorChange() {
-    const newColor = backGColor === white ? green : white;
-    setBackGColor(newColor);
+  function handleColorChange(id) {
+    console.log(id);
+    const newColor =
+      id === selectedIndex
+        ? backgroundColor === white
+          ? green
+          : white
+        : green;
+    setBackGColor({ backgroundColor: newColor, selectedIndex: id });
   }
-
-  // const getRandomColor = () => {
-  //   return "#" + Math.random().toString(16).slice(2, 8);
-  // }
-
-  // I found this formula
-  // here: https://css-tricks.com/snippets/javascript/random-hex-backgroundColor/
-  // const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
   function getDifferenceInDays(start, end) {
     const date1 = new Date(start);
@@ -58,9 +59,12 @@ function SearchResults({ bookings }) {
             return (
               <tr
                 key={data.id}
-                style={{ backgroundColor: backGColor }}
-                color={{ backGColor }}
-                onClick={handleColorChange}
+                style={
+                  data.id === selectedIndex
+                    ? { backgroundColor: backgroundColor }
+                    : { backgroundColor: white }
+                }
+                onClick={() => handleColorChange(data.id)}
               >
                 <th scope="col">{data.id}</th>
                 <th scope="col">{data.title}</th>
