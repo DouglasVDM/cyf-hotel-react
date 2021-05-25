@@ -1,7 +1,25 @@
-import React from "react";
-import FakeBookings from "./data/fakeBookings.json";
+import React, { useState } from "react";
 
 function SearchResults({ bookings }) {
+  let green = "#39D1B4";
+  let white = "white";
+
+  const initialState = green;
+  const [backGColor, setBackGColor] = useState(initialState);
+
+  function handleColorChange() {
+    const newColor = backGColor === white ? green : white;
+    setBackGColor(newColor);
+  }
+
+  // const getRandomColor = () => {
+  //   return "#" + Math.random().toString(16).slice(2, 8);
+  // }
+
+  // I found this formula
+  // here: https://css-tricks.com/snippets/javascript/random-hex-backgroundColor/
+  // const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
   function getDifferenceInDays(start, end) {
     const date1 = new Date(start);
     const date2 = new Date(end);
@@ -35,10 +53,15 @@ function SearchResults({ bookings }) {
             <th scope="col">Number Of Nights</th>
           </tr>
         </thead>
-        {bookings.map(data => {
-          return (
-            <tbody key={data.id}>
-              <tr>
+        <tbody>
+          {bookings.map(data => {
+            return (
+              <tr
+                key={data.id}
+                style={{ backgroundColor: backGColor }}
+                color={{ backGColor }}
+                onClick={handleColorChange}
+              >
                 <th scope="col">{data.id}</th>
                 <th scope="col">{data.title}</th>
                 <th scope="col">{data.firstName}</th>
@@ -51,9 +74,9 @@ function SearchResults({ bookings }) {
                   {getDifferenceInDays(data.checkInDate, data.checkOutDate)}
                 </th>
               </tr>
-            </tbody>
-          );
-        })}
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
