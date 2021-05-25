@@ -1,4 +1,3 @@
-import { localeData } from "moment";
 import React, { useState } from "react";
 
 function SearchResults({ bookings }) {
