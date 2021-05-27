@@ -10,7 +10,6 @@ function SearchResults({ bookings }) {
   );
 
   function handleColorChange(id) {
-    console.log(id);
     const newColor =
       id === selectedIndex
         ? backgroundColor === white
