@@ -4,7 +4,13 @@ import SearchResults from "./SearchResults";
 
 const Bookings = () => {
   const search = searchVal => {
-    console.info("TO DO!", searchVal);
+    const newBookings = bookings;
+    let filteredBooking = newBookings.filter(
+      client =>
+        client.firstName.toUpperCase() === searchVal.toUpperCase() ||
+        client.surname.toUpperCase() === searchVal.toUpperCase()
+    );
+    setBookings(filteredBooking);
   };
 
   const [error, setError] = useState(null);
