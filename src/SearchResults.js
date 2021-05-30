@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import CustomerProfile from "./CustomerProfile";
 
 function SearchResults({ bookings }) {
+  const [id, setId] = useState([]);
+
   let green = "#39D1B4";
   let white = "white";
 
@@ -35,6 +38,8 @@ function SearchResults({ bookings }) {
     return diffInDays;
   }
 
+  // const handleOnClick =
+
   return (
     <div className="table-responsive">
       <table className="table">
@@ -50,6 +55,7 @@ function SearchResults({ bookings }) {
             <th scope="col">Check in Date</th>
             <th scope="col">Check out Date</th>
             <th scope="col">Number Of Nights</th>
+            <th scope="col">Profile</th>
           </tr>
         </thead>
         <tbody>
@@ -75,11 +81,24 @@ function SearchResults({ bookings }) {
                 <th scope="col">
                   {getDifferenceInDays(data.checkInDate, data.checkOutDate)}
                 </th>
+                <th>
+                  <button
+                    onClick={() => {
+                      console.log("Buttin is working!");
+                      setId(data.id);
+                    }}
+                    type="text"
+                    scope="col"
+                  >
+                    Show Profile
+                  </button>
+                </th>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <CustomerProfile id={id} />
     </div>
   );
 }
