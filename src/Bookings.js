@@ -20,7 +20,7 @@ const Bookings = () => {
   // Note: the empty deps array [] means
   // this useEffect will run once
   useEffect(() => {
-    fetch("https://cyf-react.glitch.me")
+    fetch("https://cyf-react.glitch.me/delayed")
       .then(response => response.json())
       .then(
         result => {
@@ -38,9 +38,17 @@ const Bookings = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div>
+        <h1>Error: {error.message}</h1>
+      </div>
+    );
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
   } else {
     return (
       <div className="App-content">
