@@ -43,7 +43,7 @@ function SearchResults({ bookings }) {
   return (
     <div className="table-responsive">
       <table className="table">
-        <caption>List of Customers</caption>
+        {/* <caption>List of Customers</caption> */}
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -70,18 +70,18 @@ function SearchResults({ bookings }) {
                 }
                 onClick={() => handleColorChange(data.id)}
               >
-                <th scope="col">{data.id}</th>
-                <th scope="col">{data.title}</th>
-                <th scope="col">{data.firstName}</th>
-                <th scope="col">{data.surname}</th>
-                <th scope="col">{data.email}</th>
-                <th scope="col">{data.roomId}</th>
-                <th scope="col">{data.checkInDate}</th>
-                <th scope="col">{data.checkOutDate}</th>
-                <th scope="col">
+                <td scope="col">{data.id}</td>
+                <td scope="col">{data.title}</td>
+                <td scope="col">{data.firstName}</td>
+                <td scope="col">{data.surname}</td>
+                <td scope="col">{data.email}</td>
+                <td scope="col">{data.roomId}</td>
+                <td scope="col">{data.checkInDate}</td>
+                <td scope="col">{data.checkOutDate}</td>
+                <td scope="col">
                   {getDifferenceInDays(data.checkInDate, data.checkOutDate)}
-                </th>
-                <th scope="col">
+                </td>
+                <td scope="col">
                   <button
                     onClick={() => {
                       setId(data.id);
@@ -90,12 +90,13 @@ function SearchResults({ bookings }) {
                   >
                     Show Profile
                   </button>
-                </th>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <br />
       {id ? <CustomerProfile id={id} /> : null}
     </div>
   );

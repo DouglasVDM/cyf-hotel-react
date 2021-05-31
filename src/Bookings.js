@@ -20,7 +20,7 @@ const Bookings = () => {
   // Note: the empty deps array [] means
   // this useEffect will run once
   useEffect(() => {
-    fetch("https://cyf-react.glitch.me/delayed")
+    fetch("https://cyf-react.glitch.me")
       .then(response => response.json())
       .then(
         result => {
@@ -54,6 +54,7 @@ const Bookings = () => {
       <div className="App-content">
         <div className="container">
           <Search search={search} />
+          <br />
           <SearchResults bookings={bookings} />
         </div>
       </div>

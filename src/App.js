@@ -10,9 +10,13 @@ const App = () => {
   return (
     <div className="App">
       <Heading />
+      <br />
       <Bookings />
+      <br />
       <Restaurant />
+      <br />
       <TouristInfoCards />
+      <br />
       <Footer
         footerInfo={[
           "123 Fake Street, London, E1 4UD",

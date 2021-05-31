@@ -32,10 +32,12 @@ function CustomerProfile({ id }) {
   } else {
     return customer ? (
       <div>
-        <li>Customer {customer.id} Profile</li>
-        <li>Email: {customer.email}</li>
-        <li>Is VIP: {String(customer.vip)}</li>
-        <li>Phone Number: {customer.phoneNumber}</li>
+        <ul style={{ listStyle: "none" }}>
+          <li>Customer {customer.id} Profile</li>
+          <li>Email: {customer.email}</li>
+          <li>Is VIP: {String(customer.vip)}</li>
+          <li>Phone Number: {customer.phoneNumber}</li>
+        </ul>
       </div>
     ) : null;
   }

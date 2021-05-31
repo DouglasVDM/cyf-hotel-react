@@ -5,9 +5,12 @@ const Restaurant = () => {
   return (
     <div>
       <h3>Restaurant Orders</h3>
-      <ul>
+      <br />
+      <ul style={{ listStyle: "none" }}>
         <Order orderType="Pizzas" />
+        <br />
         <Order orderType="Salads" />
+        <br />
         <Order orderType="Chocolate cake" />
       </ul>
     </div>
