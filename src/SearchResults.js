@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomerProfile from "./CustomerProfile";
 
 function SearchResults({ bookings }) {
-  const [id, setId] = useState("");
+  const [id, setId] = useState(null);
 
   let green = "#39D1B4";
   let white = "white";
@@ -96,7 +96,7 @@ function SearchResults({ bookings }) {
           })}
         </tbody>
       </table>
-      <CustomerProfile id={id} />
+      {id ? <CustomerProfile id={id} /> : null}
     </div>
   );
 }
