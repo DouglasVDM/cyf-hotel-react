@@ -7,19 +7,19 @@ function SearchResults({ bookings }) {
   let green = "#39D1B4";
   let white = "white";
 
-  const initialState = { backgroundColor: white, selectedIndex: -1 };
-  const [{ backgroundColor, selectedIndex }, setBackGColor] = useState(
-    initialState
-  );
+  const [selectedRows, setSelectedRows] = useState([]);
 
   function handleColorChange(id) {
-    const newColor =
-      id === selectedIndex
-        ? backgroundColor === white
-          ? green
-          : white
-        : green;
-    setBackGColor({ backgroundColor: newColor, selectedIndex: id });
+    // add the selectedrow to my list of selectedrows
+    // selectedRows.concat(id)
+    // if id of selectedrow is in the list
+    // selectedRows.includes(id)?remove the row from the list
+    // otherwise, add the row to the list
+    if (selectedRows.includes(id)) {
+      setSelectedRows(selectedRows.filter(el => el !== id));
+    } else {
+      setSelectedRows(selectedRows.concat(id));
+    }
   }
 
   function getDifferenceInDays(start, end) {
@@ -37,8 +37,6 @@ function SearchResults({ bookings }) {
 
     return diffInDays;
   }
-
-  // const handleOnClick =
 
   return (
     <div className="table-responsive">
@@ -60,12 +58,14 @@ function SearchResults({ bookings }) {
         </thead>
         <tbody>
           {bookings.map(data => {
+            console.log("drawing table row", data.id);
+            console.log("selected Rows", selectedRows);
             return (
               <tr
                 key={data.id}
                 style={
-                  data.id === selectedIndex
-                    ? { backgroundColor: backgroundColor }
+                  selectedRows.includes(data.id)
+                    ? { backgroundColor: green }
                     : { backgroundColor: white }
                 }
                 onClick={() => handleColorChange(data.id)}
