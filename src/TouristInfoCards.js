@@ -5,7 +5,7 @@ import React from "react";
 
 const TouristInfoCards = () => {
   return (
-    <div>
+    <div className="card-deck">
       <div className="card">
         <img
           src="https://images.unsplash.com/photo-1571494146906-86de15d3817b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z2xhc2dvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
@@ -29,7 +29,6 @@ const TouristInfoCards = () => {
           </a>
         </div>
       </div>
-      ,
       <div className="card">
         <img
           src="https://images.unsplash.com/photo-1515586838455-8f8f940d6853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFuY2hlc3RlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
@@ -52,7 +51,6 @@ const TouristInfoCards = () => {
           </a>
         </div>
       </div>
-      ,
       <div className="card">
         <img
           src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9uZG9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
