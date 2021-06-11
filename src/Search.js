@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import SearchButton from "./SearchButton";
 
 const Search = ({ search }) => {
-  // console.log(`Search:${search}`);
-
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearchInput = event => {
     setSearchInput(event.target.value);
-    // console.log((event.target.value));
   };
 
   const handleOnSubmit = event => {

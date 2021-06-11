@@ -10,11 +10,6 @@ function SearchResults({ bookings }) {
   const [selectedRows, setSelectedRows] = useState([]);
 
   function handleColorChange(id) {
-    // add the selectedrow to my list of selectedrows
-    // selectedRows.concat(id)
-    // if id of selectedrow is in the list
-    // selectedRows.includes(id)?remove the row from the list
-    // otherwise, add the row to the list
     if (selectedRows.includes(id)) {
       setSelectedRows(selectedRows.filter(el => el !== id));
     } else {

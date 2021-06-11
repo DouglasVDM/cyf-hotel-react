@@ -14,9 +14,6 @@ const Bookings = () => {
   };
 
   console.log("component loaded");
-  const [error, setError] = useState(null);
-  // const [isLoaded, setIsLoaded] = useState(false);
-  // const [bookings, setBookings] = useState([]);
   const [state, setState] = useState({
     status: "loading",
     bookings: null,
@@ -38,26 +35,14 @@ const Bookings = () => {
           };
         }
       )
-      .then(
-        result => {
-          setState({
-            status: "complete",
-            bookings: result,
-            error: result.error
-          });
-        }
-
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        // error => {
-        //   setIsLoaded(false);
-        //   setError(error);
-        // }
-      );
+      .then(result => {
+        setState({
+          status: "complete",
+          bookings: result,
+          error: result.error
+        });
+      });
   }, []);
-
-  // setIsLoaded(false);
 
   if (state.error) {
     return (
