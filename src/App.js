@@ -7,6 +7,7 @@ import TouristInfoCards from "./TouristInfoCards";
 import Footer from "./Footer";
 
 const App = () => {
+  const myId = Math.random();
   return (
     <div className="App">
       <Heading />
@@ -15,7 +16,7 @@ const App = () => {
       <br />
       <Restaurant />
       <br />
-      <TouristInfoCards />
+      <TouristInfoCards key={myId} />
       <br />
       <Footer
         footerInfo={[
