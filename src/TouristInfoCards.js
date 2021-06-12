@@ -7,16 +7,20 @@ const TouristInfoCards = () => {
       {TouristCardInfo.map(info => {
         return (
           <div key={info.city} className="card">
-            <img src={info.image} className="card-img-top" />
+            <a href={info.website} target="_blank">
+              <img src={info.image} className="card-img-top" />
+            </a>
             <div className="card-body">
-              <h2>{info.city}</h2>
+              <a href={info.website} target="_blank">
+                <h2 style={{ color: "black" }}>{info.city}</h2>
+              </a>
               <p>{info.summary}</p>
               <a
                 href={info.website}
                 target="_blank"
                 className="btn btn-primary"
               >
-                More Information{" "}
+                More Information
               </a>
             </div>
           </div>
