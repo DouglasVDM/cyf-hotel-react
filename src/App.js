@@ -8,6 +8,13 @@ import Footer from "./Footer";
 
 const App = () => {
   const myId = Math.random();
+
+  const footerInfo = [
+    "123 Fake Street, London, E1 4UD",
+    "hello@fakehotel.com",
+    "0123 456789"
+  ];
+
   return (
     <div className="App">
       <Heading />
@@ -18,13 +25,7 @@ const App = () => {
       <br />
       <TouristInfoCards key={myId} />
       <br />
-      <Footer
-        footerInfo={[
-          "123 Fake Street, London, E1 4UD",
-          "hello@fakehotel.com",
-          "0123 456789"
-        ]}
-      />
+      <Footer footerInfo={footerInfo} />
     </div>
   );
 };
