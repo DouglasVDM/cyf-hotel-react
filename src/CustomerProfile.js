@@ -5,8 +5,6 @@ function CustomerProfile({ id }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [customer, setCustomer] = useState(null);
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
   useEffect(() => {
     fetch(`https://cyf-react.glitch.me/customers/${id}`)
       .then(response => response.json())
@@ -15,9 +13,6 @@ function CustomerProfile({ id }) {
           setIsLoaded(true);
           setCustomer(result);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         error => {
           setIsLoaded(true);
           setError(error);

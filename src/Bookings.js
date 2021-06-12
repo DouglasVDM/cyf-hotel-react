@@ -4,17 +4,12 @@ import SearchResults from "./SearchResults";
 
 const Bookings = () => {
   const search = searchVal => {
-    // const newBookings = bookings;
     const searchRegex = new RegExp(searchVal, "i");
     const newBookings = [...state.bookings];
 
     let filteredBooking = newBookings.filter(client => {
       const fullName = client.firstName + client.surname;
-
       return searchRegex.test(fullName);
-
-      // client.firstName.toUpperCase() === searchVal.toUpperCase() ||
-      // client.surname.toUpperCase() === searchVal.toUpperCase()
     });
     setState({ ...state, filteredBooking });
   };
@@ -26,14 +21,11 @@ const Bookings = () => {
     filteredBooking: null
   });
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
   useEffect(() => {
     fetch("https://cyf-react.glitch.me/")
       .then(
         response => response.json(),
         () => {
-          console.log("reached here");
           return {
             status: "loading",
             bookings: null,

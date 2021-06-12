@@ -3,7 +3,6 @@ import SearchButton from "./SearchButton";
 
 const Search = ({ search }) => {
   const [searchInput, setSearchInput] = useState("");
-  console.log("searchInput:", searchInput);
 
   const handleSearchInput = event => {
     setSearchInput(event.target.value);

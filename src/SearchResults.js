@@ -36,7 +36,6 @@ function SearchResults({ bookings }) {
   return (
     <div className="table-responsive">
       <table className="table">
-        {/* <caption>List of Customers</caption> */}
         <thead>
           <tr>
             <th scope="col">ID</th>
