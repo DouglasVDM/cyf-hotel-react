@@ -4,20 +4,26 @@ import SearchResults from "./SearchResults";
 
 const Bookings = () => {
   const search = searchVal => {
-    const newBookings = bookings;
-    let filteredBooking = newBookings.filter(
-      client =>
-        client.firstName.toUpperCase() === searchVal.toUpperCase() ||
-        client.surname.toUpperCase() === searchVal.toUpperCase()
-    );
-    setBookings(filteredBooking);
+    // const newBookings = bookings;
+    const searchRegex = new RegExp(searchVal, "i");
+    const newBookings = [...state.bookings];
+
+    let filteredBooking = newBookings.filter(client => {
+      const fullName = client.firstName + client.surname;
+
+      return searchRegex.test(fullName);
+
+      // client.firstName.toUpperCase() === searchVal.toUpperCase() ||
+      // client.surname.toUpperCase() === searchVal.toUpperCase()
+    });
+    setState({ ...state, filteredBooking });
   };
 
-  console.log("component loaded");
   const [state, setState] = useState({
     status: "loading",
     bookings: null,
-    error: null
+    error: null,
+    filteredBooking: null
   });
 
   // Note: the empty deps array [] means
@@ -31,7 +37,8 @@ const Bookings = () => {
           return {
             status: "loading",
             bookings: null,
-            error: "Unable to fetch!"
+            error: "Unable to fetch!",
+            filteredBooking: null
           };
         }
       )
@@ -39,7 +46,8 @@ const Bookings = () => {
         setState({
           status: "complete",
           bookings: result,
-          error: result.error
+          error: result.error,
+          filteredBooking: result
         });
       });
   }, []);
@@ -62,7 +70,7 @@ const Bookings = () => {
         <div className="container">
           <Search search={search} />
           <br />
-          <SearchResults bookings={state.bookings} />
+          <SearchResults bookings={state.filteredBooking} />
         </div>
       </div>
     );

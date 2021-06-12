@@ -53,8 +53,6 @@ function SearchResults({ bookings }) {
         </thead>
         <tbody>
           {bookings.map(data => {
-            console.log("drawing table row", data.id);
-            console.log("selected Rows", selectedRows);
             return (
               <tr
                 key={data.id}
